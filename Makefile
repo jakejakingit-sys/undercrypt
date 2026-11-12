@@ -1,4 +1,4 @@
-NAME        = UNDERCRYPT
+NAME        = UNDERCRY
 DESCRIPTION = "UNDERCRYPT"
 COMPRESSED  = YES
 CFLAGS      = -Wall -Wextra -Oz
