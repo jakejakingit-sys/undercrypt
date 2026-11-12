@@ -20,7 +20,7 @@ enum { C_VOID, C_BG, C_FLOOR, C_FLOOR2, C_WALL, C_WALLHI, C_RUNE, C_RUNE_D,
        C_RED, C_ORANGE, C_GOLD, C_WHITE, C_MINT, C_BLUE, C_PURPLE, C_GREEN };
 enum { ST_TITLE, ST_EXPLORE, ST_BOSS, ST_WIN, ST_LOSE, ST_PAUSE };
 typedef struct { int x,y,vx,vy; uint8_t life,on,kind; } Shot;
-typedef struct { int x,y,vx,vy; uint8_t life,on; } Bullet;
+typedef struct { int x,y,vx,vy; uint8_t life,on,kind; } Bullet;
 typedef struct { int x,y,vx,vy,life,col; } Particle;
 typedef struct { int x,y,w,h; } Block;
 
@@ -148,6 +148,7 @@ static void boss_update(void){
   if(boss_id==1&&boss_phase&&!iframes&&absi(px-boss_warn_x)<10){hp--;iframes=46;sparkle(px,py,C_RED,9);if(hp<=0)state=ST_LOSE;}
   for(int i=0;i<MAX_SHOTS;i++)if(shots[i].on){Shot*s=&shots[i];s->x+=s->vx;s->y+=s->vy;if(s->life)s->life--;if(!s->life||s->x<-10*Q||s->x>330*Q||s->y<-10*Q||s->y>250*Q)s->on=0;
     if(s->on&&!door_open&&absi(s->x/Q-160)<24&&absi(s->y/Q-58)<30){s->on=0;boss_hp--;score+=10;sparkle(160,72,C_GOLD,5);if(boss_hp<=0){boss_hp=0;door_open=true;boss_phase=2;memset(bullets,0,sizeof(bullets));memset(shots,0,sizeof(shots));}}
+  }
 }
 static void explore_update(int left,int right,int up,int down,bool fire){
   int dx=right-left,dy=down-up;if(dx||dy){face=dx?dx:face;int nx=px+dx*(dash_time?5:2),ny=py+dy*(dash_time?5:2);if(!blocked(nx,py))px=nx;if(!blocked(px,ny))py=ny;}
