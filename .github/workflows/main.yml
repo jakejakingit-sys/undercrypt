@@ -24,9 +24,9 @@ jobs:
 
       - name: Enforce 75 KiB program limit
         run: |
-          test -s bin/UNDERCRYPT.8xp
-          size=$(wc -c < bin/UNDERCRYPT.8xp)
-          echo "UNDERCRYPT.8xp size: ${size} bytes"
+          test -s bin/UNDERCRY.8xp
+          size=$(wc -c < bin/UNDERCRY.8xp)
+          echo "UNDERCRY.8xp size: ${size} bytes"
           if [ "$size" -gt 76800 ]; then
             echo "Build exceeds the 75 KiB limit."
             exit 1
@@ -35,5 +35,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: UNDERCRYPT-8XP
-          path: bin/UNDERCRYPT.8xp
+          path: bin/UNDERCRY.8xp
           if-no-files-found: error
