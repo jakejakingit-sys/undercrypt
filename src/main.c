@@ -209,7 +209,7 @@ static void draw_boss(void){
     for(int i=0;i<4;i++){box(133+i*16,87+bob,8,3,C_GOLD);box(136+i*16,90+bob,3,5,C_RUNE);}
   }
   /* core / boss health */
-  box(108,100,104,7,C_VOID);box(110,102,boss_max*100/12,3,C_RED_D);box(110,102,boss_hp*100/12,3,C_RED);
+  box(108,100,104,7,C_VOID);box(110,102,boss_max*100/12,3,C_RUNE_D);box(110,102,boss_hp*100/12,3,C_RED);
   for(int i=0;i<boss_hp;i++)box(110+i*8,102,4,3,C_GOLD);
 }
 static void draw_bullets(void){
